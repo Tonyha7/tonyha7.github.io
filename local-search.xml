@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>九个正则干掉app谷歌广告(转)</title>
+    <link href="/2022/12/01/%E4%B9%9D%E4%B8%AA%E6%AD%A3%E5%88%99%E5%B9%B2%E6%8E%89app%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A-%E8%BD%AC/"/>
+    <url>/2022/12/01/%E4%B9%9D%E4%B8%AA%E6%AD%A3%E5%88%99%E5%B9%B2%E6%8E%89app%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A-%E8%BD%AC/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p><code>(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)V)</code></p><p>替换：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$1<br><br>    <span class="hljs-keyword">return</span>-<span class="hljs-keyword">void</span><br></code></pre></td></tr></table></figure><h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p><code>(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)Z)</code></p><p>替换：</p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs smali">$1<br><br>   <span class="hljs-built_in"> const/4 </span>v0, 0x0<br>    <br>   <span class="hljs-built_in"> return </span>v0<br></code></pre></td></tr></table></figure><h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p><code>(invoke.*loadAd\(.*\)[VZ])</code></p><p>替换：</p><p><code>#$1</code></p><h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p><code>(invoke.*gms.*\&gt;(loadUrl|loadDataWithBaseURL|requestInterstitialAd|showInterstitial|showVideo|showAd|loadData|onAdClicked|onAdLoaded|isLoading|loadAds|AdLoader|AdRequest|AdListener|AdView).*V)</code></p><p>替换：</p><p><code>#$1</code></p><h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><p><code>\&quot;(http.*|//.*)(61\.145\.124\.238|\-ads\.|\.ad\.|\.ads\.|\.analytics\.localytics\.com|\.mobfox\.com|\.mp\.mydas\.mobi|\.plus1\.wapstart\.ru|\.scorecardresearch\.com|\.startappservice\.com|\/ad\.|\/ads|ad\-mail|ad\.*\_logging|ad\.api\.kaffnet\.com|adc3\-launch|adcolony|adinformation|adkmob|admax|admob|admost|adsafeprotected|adservice|adtag|advert|adwhirl|adz\.wattpad\.com|alta\.eqmob\.com|amazon\-*ads|amazon\.*ads|amobee|analytics|applovin|applvn|appnext|appodeal|appsdt|appsflyer|burstly|cauly|cloudfront|com\.google\.android\.gms\.ads\.identifier\.service\.START|crashlytics|crispwireless|doubleclick|dsp\.batmobil\.net|duapps|dummy|flurry|gad|getads|google\.com\/dfp|googleAds|googleads|googleapis\.*\.ad\-*|googlesyndication|googletagmanager|greystripe|gstatic|inmobi|inneractive|jumptag|live\.chartboost\.com|madnet|millennialmedia|moatads|mopub|native\_ads|pagead|pubnative|smaato|supersonicads|tapas|tapjoy|unityads|vungle|zucks).*\&quot;</code></p><p>替换：</p><p><code>&quot;=&quot;</code></p><h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><p><code>ca-app-pub-\d&#123;16&#125;/\d&#123;10&#125;</code></p><p>替换：</p><p><code>ca-app-pub-0000000000000000/0000000000</code></p><h2 id="七"><a href="#七" class="headerlink" title="七"></a>七</h2><p><code>invoke-.*\&#123;.*\&#125;, L.*;-&gt;(loadAd|requestNativeAd|showInterstitial|fetchad|fetchads|onadloaded|requestInterstitialAd|showAd|loadAds|AdRequest|requestBannerAd|loadNextAd|createInterstitialAd|setNativeAd|loadBannerAd|loadNativeAd|loadRewardedAd|loadRewardedInterstitialAd|loadAds|loadAdViewAd|showInterstitialAd|shownativead|showbannerad|showvideoad|onAdFailedToLoad)\(.*\)V</code></p><p>替换：</p><p><code>nop</code></p><h2 id="八"><a href="#八" class="headerlink" title="八"></a>八</h2><p><code>invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;requestInterstitialAd\(*.*\)V|invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;loadAds\(*.*\)V|invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;loadAd\(*.*\)V|invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;requestBannerAd\(*.*\)V|invoke-*.*\s\&#123;[v|p]\d\&#125;,\sLcom/facebook*.*\;\-\&gt;show\(*.*\)V|invoke-*.*\s\&#123;[v|p]\d\&#125;,\sLcom/google*.*\;\-\&gt;show\(*.*\)V</code></p><p>替换：</p><p><code>nop</code></p><h2 id="九"><a href="#九" class="headerlink" title="九"></a>九</h2><p><code>(\.method.*(loadAd|requestNativeAd|showInterstitial|fetchad|fetchads|onadloaded|requestInterstitialAd|showAd|loadAds|AdRequest|requestBannerAd|loadNextAd|createInterstitialAd|setNativeAd|loadBannerAd|loadNativeAd|loadRewardedAd|loadRewardedInterstitialAd|loadAds|loadAdViewAd|showInterstitialAd|shownativead|showbannerad|showvideoad|onAdFailedToLoad)\(.*\)V     \.registers \d+)[\s\S]*?\.end method</code></p><p>替换：</p><p><code>#</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>msykanswer保姆级使用教程</title>
     <link href="/2022/12/01/msykanswer%E4%BF%9D%E5%A7%86%E7%BA%A7%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <url>/2022/12/01/msykanswer%E4%BF%9D%E5%A7%86%E7%BA%A7%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>

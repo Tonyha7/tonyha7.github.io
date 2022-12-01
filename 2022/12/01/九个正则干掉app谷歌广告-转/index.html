@@ -16,22 +16,23 @@
   <meta name="author" content="Tonyha7">
   <meta name="keywords" content="">
   
-    <meta name="description" content="项目地址如果你是懒人 不想配置python环境 可以直接下载Release里面打包好的exe 但是无论怎么运行 一定要在命令行中运行 否则可能会遇到各种奇怪的错误导致闪退 安卓推荐使用Termux 存储空间实在不够的可以考虑Pydroid 3(体验一般) 登录如果你是第一次使用本程序 且不知道登录信息是什么东西 那么在 输入登录信息(失败则模拟登录): 直接回车即可 用户名和密码就没啥可说的了 m">
+    <meta name="description" content="一(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)V) 替换： 123$1    return-void  二(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)Z) 替换： 12345$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="msykanswer保姆级使用教程">
-<meta property="og:url" content="https://tonyha7.github.io/2022/12/01/msykanswer%E4%BF%9D%E5%A7%86%E7%BA%A7%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:title" content="九个正则干掉app谷歌广告(转)">
+<meta property="og:url" content="https://tonyha7.github.io/2022/12/01/%E4%B9%9D%E4%B8%AA%E6%AD%A3%E5%88%99%E5%B9%B2%E6%8E%89app%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A-%E8%BD%AC/index.html">
 <meta property="og:site_name" content="th7的小窝">
-<meta property="og:description" content="项目地址如果你是懒人 不想配置python环境 可以直接下载Release里面打包好的exe 但是无论怎么运行 一定要在命令行中运行 否则可能会遇到各种奇怪的错误导致闪退 安卓推荐使用Termux 存储空间实在不够的可以考虑Pydroid 3(体验一般) 登录如果你是第一次使用本程序 且不知道登录信息是什么东西 那么在 输入登录信息(失败则模拟登录): 直接回车即可 用户名和密码就没啥可说的了 m">
+<meta property="og:description" content="一(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)V) 替换： 123$1    return-void  二(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)Z) 替换： 12345$">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-01T00:54:52.000Z">
-<meta property="article:modified_time" content="2022-12-01T01:58:27.654Z">
+<meta property="article:published_time" content="2022-12-01T02:39:56.000Z">
+<meta property="article:modified_time" content="2022-12-01T02:48:38.251Z">
 <meta property="article:author" content="Tonyha7">
-<meta property="article:tag" content="教育">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="安卓">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>msykanswer保姆级使用教程 - th7的小窝</title>
+  <title>九个正则干掉app谷歌广告(转) - th7的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="msykanswer保姆级使用教程"></span>
+            <span id="subtitle" data-typed-text="九个正则干掉app谷歌广告(转)"></span>
           
         </div>
 
@@ -207,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-01 08:54" pubdate>
-          2022年12月1日 早上
+        <time datetime="2022-12-01 10:39" pubdate>
+          2022年12月1日 上午
         </time>
       </span>
     
@@ -219,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          783 字
+          2.7k 字
         
       </span>
     
@@ -230,7 +231,7 @@
         
         
         
-          7 分钟
+          23 分钟
         
       </span>
     
@@ -268,71 +269,40 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">msykanswer保姆级使用教程</h1>
+            <h1 style="display: none">九个正则干掉app谷歌广告(转)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a><a target="_blank" rel="noopener" href="https://github.com/Tonyha7/msyk-invasion">项目地址</a></h2><p>如果你是懒人 不想配置python环境 可以直接下载<a target="_blank" rel="noopener" href="https://github.com/Tonyha7/msyk-invasion/releases">Release</a>里面打包好的exe</p>
-<p>但是无论怎么运行 一定要<strong>在命令行中</strong>运行 否则可能会遇到各种奇怪的错误导致闪退</p>
-<p>安卓推荐使用<a target="_blank" rel="noopener" href="https://f-droid.org/en/packages/com.termux/">Termux</a> 存储空间实在不够的可以考虑<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3">Pydroid 3</a>(体验一般)</p>
-<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>如果你是第一次使用本程序 且不知道登录信息是什么东西 那么在</p>
-<p><code>输入登录信息(失败则模拟登录):</code></p>
-<p>直接回车即可</p>
-<p>用户名和密码就没啥可说的了</p>
-<p>mac为你平板美师优课绑定的mac 大部分平板在设置的WLAN下就有</p>
-<p>安卓API参考下表 对于教育平板应该是够用了</p>
-<table>
-<thead>
-<tr>
-<th>安卓版本</th>
-<th>API</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Android 11.0(R)</td>
-<td>30</td>
-</tr>
-<tr>
-<td>Android 10.0(Q)</td>
-<td>29</td>
-</tr>
-<tr>
-<td>Android 9.0(Pie)</td>
-<td>28</td>
-</tr>
-<tr>
-<td>Android 8.1(Oreo)</td>
-<td>27</td>
-</tr>
-<tr>
-<td>Android 8.0(Oreo)</td>
-<td>26</td>
-</tr>
-<tr>
-<td>Android 7.1(Nougat)</td>
-<td>25</td>
-</tr>
-<tr>
-<td>Android 7.0(Nougat)</td>
-<td>24</td>
-</tr>
-<tr>
-<td>Android 6.0(Marshmallow)</td>
-<td>23</td>
-</tr>
-</tbody></table>
-<p>SN为你平板的序列号 注意<strong>区分大小写</strong></p>
-<p>如果登录成功 会在运行目录下创建一个<em>你的姓名.json</em>的文件 这个文件里的信息就是你的登录信息 下次可以直接粘贴到第一行即可登录</p>
-<h2 id="获取作业信息和答案"><a href="#获取作业信息和答案" class="headerlink" title="获取作业信息和答案"></a>获取作业信息和答案</h2><p>对于正在进行的作业 作业名前面那一串数字即为作业id</p>
-<p>也可以通过web端打开作业页面地址栏的homeworkId获取</p>
-<p>同一项作业 不同班级的作业id<strong>不同</strong></p>
-<p>不出意外的话 你应该能看见作业的<em>文档地址</em>和选择题的答案了</p>
-<p>注意：文档地址可能会被程序弄错 使用时注意下是否有两个http （我的锅）</p>
-<p>输入y并回车即可自动提交选择答案 但要注意 提交时app&#x2F;web都不要在这个作业的页面 否则答案会被空白的覆盖 提交成功后即可进去修改</p>
-<h2 id="跑作业id"><a href="#跑作业id" class="headerlink" title="跑作业id"></a>跑作业id</h2><p>适用于已经设置好 但未到设定开始时间的作业</p>
-<p>app主页的新作业数比列表中的多就是有这种作业</p>
-<p>小经验：如果能确定未到开始时间的作业在最后一次作业之后发布 一般用最后一次作业的id往下滚动两三百次即可</p>
+                <h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><p><code>(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)V)</code></p>
+<p>替换：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$1<br><br>    <span class="hljs-keyword">return</span>-<span class="hljs-keyword">void</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p><code>(\.method\s(public|private|static)\s\b(?!\babstract|native\b)(.*)?loadAd\(.*\)Z)</code></p>
+<p>替换：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs smali">$1<br><br>   <span class="hljs-built_in"> const/4 </span>v0, 0x0<br>    <br>   <span class="hljs-built_in"> return </span>v0<br></code></pre></td></tr></table></figure>
+
+<h2 id="三"><a href="#三" class="headerlink" title="三"></a>三</h2><p><code>(invoke.*loadAd\(.*\)[VZ])</code></p>
+<p>替换：</p>
+<p><code>#$1</code></p>
+<h2 id="四"><a href="#四" class="headerlink" title="四"></a>四</h2><p><code>(invoke.*gms.*\&gt;(loadUrl|loadDataWithBaseURL|requestInterstitialAd|showInterstitial|showVideo|showAd|loadData|onAdClicked|onAdLoaded|isLoading|loadAds|AdLoader|AdRequest|AdListener|AdView).*V)</code></p>
+<p>替换：</p>
+<p><code>#$1</code></p>
+<h2 id="五"><a href="#五" class="headerlink" title="五"></a>五</h2><p><code>\&quot;(http.*|//.*)(61\.145\.124\.238|\-ads\.|\.ad\.|\.ads\.|\.analytics\.localytics\.com|\.mobfox\.com|\.mp\.mydas\.mobi|\.plus1\.wapstart\.ru|\.scorecardresearch\.com|\.startappservice\.com|\/ad\.|\/ads|ad\-mail|ad\.*\_logging|ad\.api\.kaffnet\.com|adc3\-launch|adcolony|adinformation|adkmob|admax|admob|admost|adsafeprotected|adservice|adtag|advert|adwhirl|adz\.wattpad\.com|alta\.eqmob\.com|amazon\-*ads|amazon\.*ads|amobee|analytics|applovin|applvn|appnext|appodeal|appsdt|appsflyer|burstly|cauly|cloudfront|com\.google\.android\.gms\.ads\.identifier\.service\.START|crashlytics|crispwireless|doubleclick|dsp\.batmobil\.net|duapps|dummy|flurry|gad|getads|google\.com\/dfp|googleAds|googleads|googleapis\.*\.ad\-*|googlesyndication|googletagmanager|greystripe|gstatic|inmobi|inneractive|jumptag|live\.chartboost\.com|madnet|millennialmedia|moatads|mopub|native\_ads|pagead|pubnative|smaato|supersonicads|tapas|tapjoy|unityads|vungle|zucks).*\&quot;</code></p>
+<p>替换：</p>
+<p><code>&quot;=&quot;</code></p>
+<h2 id="六"><a href="#六" class="headerlink" title="六"></a>六</h2><p><code>ca-app-pub-\d&#123;16&#125;/\d&#123;10&#125;</code></p>
+<p>替换：</p>
+<p><code>ca-app-pub-0000000000000000/0000000000</code></p>
+<h2 id="七"><a href="#七" class="headerlink" title="七"></a>七</h2><p><code>invoke-.*\&#123;.*\&#125;, L.*;-&gt;(loadAd|requestNativeAd|showInterstitial|fetchad|fetchads|onadloaded|requestInterstitialAd|showAd|loadAds|AdRequest|requestBannerAd|loadNextAd|createInterstitialAd|setNativeAd|loadBannerAd|loadNativeAd|loadRewardedAd|loadRewardedInterstitialAd|loadAds|loadAdViewAd|showInterstitialAd|shownativead|showbannerad|showvideoad|onAdFailedToLoad)\(.*\)V</code></p>
+<p>替换：</p>
+<p><code>nop</code></p>
+<h2 id="八"><a href="#八" class="headerlink" title="八"></a>八</h2><p><code>invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;requestInterstitialAd\(*.*\)V|invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;loadAds\(*.*\)V|invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;loadAd\(*.*\)V|invoke-*.* \&#123;*.*\&#125;, Lcom*.*;-&gt;requestBannerAd\(*.*\)V|invoke-*.*\s\&#123;[v|p]\d\&#125;,\sLcom/facebook*.*\;\-\&gt;show\(*.*\)V|invoke-*.*\s\&#123;[v|p]\d\&#125;,\sLcom/google*.*\;\-\&gt;show\(*.*\)V</code></p>
+<p>替换：</p>
+<p><code>nop</code></p>
+<h2 id="九"><a href="#九" class="headerlink" title="九"></a>九</h2><p><code>(\.method.*(loadAd|requestNativeAd|showInterstitial|fetchad|fetchads|onadloaded|requestInterstitialAd|showAd|loadAds|AdRequest|requestBannerAd|loadNextAd|createInterstitialAd|setNativeAd|loadBannerAd|loadNativeAd|loadRewardedAd|loadRewardedInterstitialAd|loadAds|loadAdViewAd|showInterstitialAd|shownativead|showbannerad|showvideoad|onAdFailedToLoad)\(.*\)V     \.registers \d+)[\s\S]*?\.end method</code></p>
+<p>替换：</p>
+<p><code>#</code></p>
 
                 
               </div>
@@ -351,7 +321,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -366,7 +336,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%99%E8%82%B2/">#教育</a>
+        <a href="/tags/%E9%80%86%E5%90%91/">#逆向</a>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
       
     </div>
   
@@ -378,8 +350,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>msykanswer保姆级使用教程</div>
-      <div>https://tonyha7.github.io/2022/12/01/msykanswer保姆级使用教程/</div>
+      <div>九个正则干掉app谷歌广告(转)</div>
+      <div>https://tonyha7.github.io/2022/12/01/九个正则干掉app谷歌广告-转/</div>
     </div>
     <div class="license-meta">
       
@@ -423,18 +395,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/01/%E4%B9%9D%E4%B8%AA%E6%AD%A3%E5%88%99%E5%B9%B2%E6%8E%89app%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A-%E8%BD%AC/" title="九个正则干掉app谷歌广告(转)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">九个正则干掉app谷歌广告(转)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/30/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4-%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F/" title="记解包一个Unity引擎的视觉小说(苍之彼方的四重奏)">
-                        <span class="hidden-mobile">记解包一个Unity引擎的视觉小说(苍之彼方的四重奏)</span>
+                      <a href="/2022/12/01/msykanswer%E4%BF%9D%E5%A7%86%E7%BA%A7%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="msykanswer保姆级使用教程">
+                        <span class="hidden-mobile">msykanswer保姆级使用教程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

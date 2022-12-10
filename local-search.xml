@@ -8,7 +8,7 @@
     <link href="/2022/12/10/%E6%9F%90%E8%BD%AF%E6%8A%A0%E5%9B%BEapp%E5%BC%80%E5%BF%83%E4%BD%BF%E7%94%A8/"/>
     <url>/2022/12/10/%E6%9F%90%E8%BD%AF%E6%8A%A0%E5%9B%BEapp%E5%BC%80%E5%BF%83%E4%BD%BF%E7%94%A8/</url>
     
-    <content type="html"><![CDATA[<h2 id="版本-1-6-8-Play商店下载"><a href="#版本-1-6-8-Play商店下载" class="headerlink" title="版本 1.6.8 Play商店下载"></a>版本 1.6.8 Play商店下载</h2><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>apks转apk<br>com.backgrounderaser.baselib.init.ContextInit.checkSha1 为签名校验 去掉native 注册寄存器 赋值1返回</p><h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>r2.c(.source为”VipManager.kt”)下的方法<br>i为剩余照片数 赋大值返回即可 注意long用const-wide<br>m和n返回1<br>j为显示的会员到期日期的字符串 强迫症可以改</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="版本-1-6-8-Play商店下载"><a href="#版本-1-6-8-Play商店下载" class="headerlink" title="版本 1.6.8 Play商店下载"></a>版本 1.6.8 Play商店下载</h2><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>apks转apk<br>com.backgrounderaser.baselib.init.ContextInit.checkSha1 为签名校验 只要不让native接收上下文即可 去掉native 注册寄存器 随便赋值0或1返回</p><h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>r2.c(.source为”VipManager.kt”)下的方法<br>i为剩余照片数 赋大值返回即可 注意long用const-wide<br>m和n返回1<br>j为显示的会员到期日期的字符串 强迫症可以改</p>]]></content>
     
     
     <categories>

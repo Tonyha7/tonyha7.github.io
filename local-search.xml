@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>一字节微信防撤回（3.8.1.26）</title>
+    <link href="/2022/12/19/%E4%B8%80%E5%AD%97%E8%8A%82%E5%BE%AE%E4%BF%A1%E9%98%B2%E6%92%A4%E5%9B%9E/"/>
+    <url>/2022/12/19/%E4%B8%80%E5%AD%97%E8%8A%82%E5%BE%AE%E4%BF%A1%E9%98%B2%E6%92%A4%E5%9B%9E/</url>
+    
+    <content type="html"><![CDATA[<h2 id="WeChatWin-dll"><a href="#WeChatWin-dll" class="headerlink" title="WeChatWin.dll"></a>WeChatWin.dll</h2><p><img src="https://file.moetu.org/images/2022/12/02/QQ202212022228141367f7c926531d89.png" alt="陈年老图"></p><p>对应文件偏移量A5221A 01改00即可</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>PC</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>原创 FreeMyVip模块 0.6 1215更新</title>
     <link href="/2022/12/12/%E5%8E%9F%E5%88%9B-FreeMyVip%E6%A8%A1%E5%9D%97/"/>
     <url>/2022/12/12/%E5%8E%9F%E5%88%9B-FreeMyVip%E6%A8%A1%E5%9D%97/</url>
@@ -77,33 +104,6 @@
       <tag>逆向</tag>
       
       <tag>游戏</tag>
-      
-      <tag>PC</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>一字节微信防撤回（3.8.1.14）</title>
-    <link href="/2022/12/02/%E4%B8%80%E5%AD%97%E8%8A%82%E5%BE%AE%E4%BF%A1%E9%98%B2%E6%92%A4%E5%9B%9E/"/>
-    <url>/2022/12/02/%E4%B8%80%E5%AD%97%E8%8A%82%E5%BE%AE%E4%BF%A1%E9%98%B2%E6%92%A4%E5%9B%9E/</url>
-    
-    <content type="html"><![CDATA[<h2 id="WeChatWin-dll"><a href="#WeChatWin-dll" class="headerlink" title="WeChatWin.dll"></a>WeChatWin.dll</h2><p><img src="https://file.moetu.org/images/2022/12/02/QQ202212022228141367f7c926531d89.png" alt="QQ202212022228141367f7c926531d89.png"></p><p>对应文件偏移量A4E9FA 01改00即可</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>逆向</tag>
       
       <tag>PC</tag>
       

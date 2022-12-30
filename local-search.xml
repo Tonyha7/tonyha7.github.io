@@ -4,7 +4,34 @@
   
   
   <entry>
-    <title>希沃白板5绿色版</title>
+    <title>一键编译基于安卓12.1的MikRom GSI</title>
+    <link href="/2022/12/30/%E4%B8%80%E9%94%AE%E7%BC%96%E8%AF%91%E5%9F%BA%E4%BA%8E%E5%AE%89%E5%8D%9312-1%E7%9A%84MikRom-GSI/"/>
+    <url>/2022/12/30/%E4%B8%80%E9%94%AE%E7%BC%96%E8%AF%91%E5%9F%BA%E4%BA%8E%E5%AE%89%E5%8D%9312-1%E7%9A%84MikRom-GSI/</url>
+    
+    <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>设备：<br>Ubuntu20.04 x64<br>CPU不需要太好 核心数越多越好<br>内存16G+<br>硬盘至少300G<br>网络通畅 需要从谷歌&#x2F;github同步安卓源码</p><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><h3 id="一键准备安卓编译环境"><a href="#一键准备安卓编译环境" class="headerlink" title="一键准备安卓编译环境"></a>一键准备安卓编译环境</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/akhilnarang/</span>scripts<br>.<span class="hljs-regexp">/scripts/</span>setup/android_build_env.sh<br></code></pre></td></tr></table></figure><h3 id="建立工作目录"><a href="#建立工作目录" class="headerlink" title="建立工作目录"></a>建立工作目录</h3><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">mkdir lineage-19.x-<span class="hljs-keyword">build</span>-<span class="hljs-keyword">gsi</span>; cd lineage-19.x-<span class="hljs-keyword">build</span>-<span class="hljs-keyword">gsi</span><br></code></pre></td></tr></table></figure><h3 id="初始化repo"><a href="#初始化repo" class="headerlink" title="初始化repo"></a>初始化repo</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">repo init -u https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/LineageOS/</span>android.git -b lineage-<span class="hljs-number">19.1</span><br></code></pre></td></tr></table></figure><h3 id="克隆补丁和脚本"><a href="#克隆补丁和脚本" class="headerlink" title="克隆补丁和脚本"></a>克隆补丁和脚本</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/Tonyha7/mi</span>krom_lineage_build_unified lineage_build_unified -b lineage-<span class="hljs-number">19.1</span><br>git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/Tonyha7/</span>lineage_patches_unified lineage_patches_unified -b lineage-<span class="hljs-number">19.1</span><br></code></pre></td></tr></table></figure><h3 id="编译-1"><a href="#编译-1" class="headerlink" title="编译"></a>编译</h3><p>如果你是在服务器跑的 强烈建议你用screen把终端挂后台运行</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bash</span> lineage_build_unified/buildbot_unified.sh treble <span class="hljs-number">64</span>VN <span class="hljs-number">64</span>VS <span class="hljs-number">64</span>GN<br></code></pre></td></tr></table></figure><p>如果时间紧迫的话 构建64VN即可<br>编译好的img在 ~&#x2F;build-output&#x2F; 下<br>我服务器用的小日子的12核24g千兆 总共用了不到4小时</p><h2 id="不提供成品"><a href="#不提供成品" class="headerlink" title="不提供成品"></a>不提供成品</h2><p>防止触动某些人的“蛋糕”</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>希沃白板5 5.2.2.7453 绿色版</title>
     <link href="/2022/12/20/%E5%B8%8C%E6%B2%83%E7%99%BD%E6%9D%BF5%E7%BB%BF%E8%89%B2%E7%89%88/"/>
     <url>/2022/12/20/%E5%B8%8C%E6%B2%83%E7%99%BD%E6%9D%BF5%E7%BB%BF%E8%89%B2%E7%89%88/</url>
     

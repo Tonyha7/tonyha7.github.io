@@ -16,25 +16,30 @@
   <meta name="author" content="th7">
   <meta name="keywords" content="">
   
-    <meta name="description" content="截图 下载永久地址">
+    <meta name="description" content="前言对于解包Unity引擎的资源 已经有不少优秀的开源工具但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包文章中可能有不当之处 还请大牛们多多包涵 分析dnspy打开游戏目录下的Assembly-CSharp.dll先搜索游戏资源文件的后缀.dat这个PRead的类比较像 进去看看有什么方法通过查看调用 大致能猜到这个字节数组Data返回的应该是文件这个字典ti存储了文件名和文件的信">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原创 FreeMyVip模块">
-<meta property="og:url" content="https://www.tonyha7.com/2023/10/03/%E5%8E%9F%E5%88%9B-FreeMyVip%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:title" content="【补档】 记解包一个Unity引擎的视觉小说">
+<meta property="og:url" content="https://www.tonyha7.com/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/index.html">
 <meta property="og:site_name" content="th7的小窝">
-<meta property="og:description" content="截图 下载永久地址">
+<meta property="og:description" content="前言对于解包Unity引擎的资源 已经有不少优秀的开源工具但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包文章中可能有不当之处 还请大牛们多多包涵 分析dnspy打开游戏目录下的Assembly-CSharp.dll先搜索游戏资源文件的后缀.dat这个PRead的类比较像 进去看看有什么方法通过查看调用 大致能猜到这个字节数组Data返回的应该是文件这个字典ti存储了文件名和文件的信">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://file.moetu.org/images/2022/12/15/QQ202212152021328575453c698f5ab8.png">
-<meta property="article:published_time" content="2023-10-03T13:20:46.000Z">
-<meta property="article:modified_time" content="2023-10-03T13:28:15.678Z">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png">
+<meta property="article:published_time" content="2023-11-12T04:20:46.000Z">
+<meta property="article:modified_time" content="2023-11-12T05:16:40.079Z">
 <meta property="article:author" content="th7">
 <meta property="article:tag" content="逆向">
-<meta property="article:tag" content="安卓">
+<meta property="article:tag" content="PC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://file.moetu.org/images/2022/12/15/QQ202212152021328575453c698f5ab8.png">
+<meta name="twitter:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
   
   
   
-  <title>原创 FreeMyVip模块 - th7的小窝</title>
+  <title>【补档】 记解包一个Unity引擎的视觉小说 - th7的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="原创 FreeMyVip模块"></span>
+            <span id="subtitle" data-typed-text="【补档】 记解包一个Unity引擎的视觉小说"></span>
           
         </div>
 
@@ -211,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-03 21:20" pubdate>
-          2023年10月3日 晚上
+        <time datetime="2023-11-12 12:20" pubdate>
+          2023年11月12日 中午
         </time>
       </span>
     
@@ -223,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8 字
+          1.2k 字
         
       </span>
     
@@ -234,7 +239,7 @@
         
         
         
-          1 分钟
+          11 分钟
         
       </span>
     
@@ -271,13 +276,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">原创 FreeMyVip模块</h1>
+            <h1 id="seo-header">【补档】 记解包一个Unity引擎的视觉小说</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="https://file.moetu.org/images/2022/12/15/QQ202212152021328575453c698f5ab8.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="http://freemyvip.tonyha7.com/">永久地址</a></p>
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于解包Unity引擎的资源 已经有不少优秀的开源工具<br>但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包<br>文章中可能有不当之处 还请大牛们多多包涵</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>dnspy打开游戏目录下的Assembly-CSharp.dll<br>先搜索游戏资源文件的后缀.dat<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png" srcset="/img/loading.gif" lazyload><br>这个PRead的类比较像 进去看看有什么方法<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png" srcset="/img/loading.gif" lazyload><br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png" srcset="/img/loading.gif" lazyload><br>通过查看调用 大致能猜到这个字节数组Data返回的应该是文件<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png" srcset="/img/loading.gif" lazyload><br>这个字典ti存储了文件名和文件的信息<br>大致流程是先new一个PRead(.dat文件路径) 然后通过传入文件名让Data返回文件的字节数组<br>有了这些 可以试试解包了</p>
+<h3 id="写解包程序"><a href="#写解包程序" class="headerlink" title="写解包程序"></a>写解包程序</h3><p>vs新建个控制台项目 新建个PRead类<br>直接把dnspy反编译的代码粘贴过来<br>把需要用到的东西修饰符都改成public 防止访问不了<br><img src="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png" srcset="/img/loading.gif" lazyload><br>然后模仿刚才的流程 把返回的字节数组用BinaryWriter写入文件</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&#123;<br>    PRead pRead;<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入dat完整路徑（如C:\\Games\\[蒼の彼方のフォーリズム][苍之彼方的四重奏][sprite]\\Aokana_Data\\sprites.dat）:&quot;</span>);<br>    String dat = Console.ReadLine();<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入輸出路徑（如F:/）:&quot;</span>);<br>    String outpath = Console.ReadLine();<br>    <br>    pRead = <span class="hljs-keyword">new</span> PRead(dat);<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">string</span> fileName <span class="hljs-keyword">in</span> pRead.ti.Keys) &#123;<br>    <span class="hljs-keyword">if</span> (!Directory.Exists(outpath))&#123;<br>            Directory.CreateDirectory(outpath);<br>        &#125;<br>        Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(outpath, fileName)));<br>        FileStream fs = <span class="hljs-keyword">new</span> FileStream(Path.Combine(outpath, fileName), FileMode.Create, FileAccess.Write);<br>        BinaryWriter binaryWriter = <span class="hljs-keyword">new</span> BinaryWriter(fs);<br>        <span class="hljs-built_in">byte</span>[] array = pRead.File(fileName);<br>        <span class="hljs-keyword">if</span> (array!=<span class="hljs-literal">null</span>)<br>        &#123;<br>            <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">byte</span> b <span class="hljs-keyword">in</span> array)<br>            &#123;<br>                binaryWriter.Write(b);<br>            &#125;<br>            binaryWriter.Close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png" srcset="/img/loading.gif" lazyload><br>搞定 这里解包的是bg.dat 其他文件有的有点辣眼睛 就不截图了</p>
 
                 
               </div>
@@ -292,7 +300,7 @@
       
         <a href="/tags/%E9%80%86%E5%90%91/" class="print-no-link">#逆向</a>
       
-        <a href="/tags/%E5%AE%89%E5%8D%93/" class="print-no-link">#安卓</a>
+        <a href="/tags/PC/" class="print-no-link">#PC</a>
       
     </div>
   
@@ -304,8 +312,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>原创 FreeMyVip模块</div>
-      <div>https://www.tonyha7.com/2023/10/03/原创-FreeMyVip模块/</div>
+      <div>【补档】 记解包一个Unity引擎的视觉小说</div>
+      <div>https://www.tonyha7.com/2023/11/12/记解包一个Unity引擎的视觉小说/</div>
     </div>
     <div class="license-meta">
       
@@ -317,7 +325,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月3日</div>
+          <div>2023年11月12日</div>
         </div>
       
       
@@ -349,18 +357,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/12/%E6%9F%90%E6%95%99%E8%82%B2app%E8%8E%B7%E5%8F%96%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/" title="【补档】 某教育app获取作业答案">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【补档】 某教育app获取作业答案</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/03/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2023/11/12/%E6%9F%90%E6%95%99%E8%82%B2app%E8%8E%B7%E5%8F%96%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/" title="【补档】 某教育app获取作业答案">
+                        <span class="hidden-mobile">【补档】 某教育app获取作业答案</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

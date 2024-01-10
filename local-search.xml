@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>HBL - 一种不是特别新的bl伪装上锁方式</title>
+    <link href="/2024/01/19/HBL/"/>
+    <url>/2024/01/19/HBL/</url>
+    
+    <content type="html"><![CDATA[<h2 id="来由"><a href="#来由" class="headerlink" title="来由"></a>来由</h2><p>本人<em>去年十月</em>期间 参考了一些检测方式（包括不开源的）和安卓源码实现的小xp模块<br>目前还是比较强力的 可过密钥检测等</p><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p><a href="https://github.com/Tonyha7/HBL">已停更</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【补档】 记解包一个Unity引擎的视觉小说</title>
     <link href="/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/"/>
     <url>/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/</url>

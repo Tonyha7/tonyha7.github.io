@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>OpenWrt虚拟网卡多拨哆点Drcom校园网</title>
+    <link href="/2024/04/14/OpenWrt%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E5%A4%9A%E6%8B%A8%E5%93%86%E7%82%B9Drcom%E6%A0%A1%E5%9B%AD%E7%BD%91/"/>
+    <url>/2024/04/14/OpenWrt%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E5%A4%9A%E6%8B%A8%E5%93%86%E7%82%B9Drcom%E6%A0%A1%E5%9B%AD%E7%BD%91/</url>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>博主苦于校园网限速50Mb长达数月 在各种方案的研究未果后 最终只得求助于单线多拨<br>已知校园网限制了同账号在线设备数为2个 那么本着<em>人多力量大</em>的原则 将每人的两个50Mb宽带叠加 就可以达到飞一般的网速</p><p>这里以一台小米AX3000T+20米六类网线为例 <strong>路由器需要自行安装macvlan和mwan3</strong> 分享下操作步骤及踩坑经验</p><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="创建虚拟网卡"><a href="#创建虚拟网卡" class="headerlink" title="创建虚拟网卡"></a>创建虚拟网卡</h3><p>连接ssh 执行下面的命令来新建网卡</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ip <span class="hljs-built_in">link</span> add <span class="hljs-built_in">link</span> eth0 name 网卡名称 <span class="hljs-built_in">type</span> macvlan<br></code></pre></td></tr></table></figure><p>这里我建立了5个虚拟网卡<br>给每个网卡建立接口 注意每个接口的跃点要不同<br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141625546d3909abb0145221.png"><br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141633546762e9ad7a048be5.png"><br>添加好后右下角保存并应用</p><h3 id="MultiWAN-配置"><a href="#MultiWAN-配置" class="headerlink" title="MultiWAN 配置"></a>MultiWAN 配置</h3><p>给每个刚才创建的接口创建MultiWAN 接口<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414163825ae3da26ddef2ec77.png"><br>启用接口并填入一个IP 判断是否能正常连接到外部网络<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414164028ac5f013d2ab02145.png"><br>每个都建好之后保存并应用</p><p>然后来到Member界面 把每个接口都添加一遍 跃点和权重留空或者填个默认的1就行<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414164708a39066f0176a75ab.png"></p><p>策略里添加一个balanced策略 把要用来多拨的成员添加进来 然后把每个成员单独创建一个策略用于登录<br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141655436ac078040f94b783.png"></p><p>规则第一条写校园网登录 协议全选 目的地填学校登录页 策略选要登录的成员策略<br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141659108c668507c9c7f767.png"><br>其余两条按下图填即可<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414170223a8802929d9c71fb8.png"><br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414170254fa0ccd413b357d56.png"><br>保存应用重启 然后把每个成员逐个登陆校园网 测试下能否多拨</p><h2 id="后续配置"><a href="#后续配置" class="headerlink" title="后续配置"></a>后续配置</h2><p>当前配置下 每次启动路由器后 虚拟网卡都会新建mac地址<br>可以通过修改”&#x2F;etc&#x2F;config&#x2F;network”文件来固定mac<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414170710fb656f5cf9917db1.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HBL - 一种不是特别新的bl伪装上锁方式</title>
     <link href="/2024/01/19/HBL/"/>
     <url>/2024/01/19/HBL/</url>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>某高体育初探</title>
+    <link href="/2024/10/28/%E6%9F%90%E9%AB%98%E4%BD%93%E8%82%B2%E5%88%9D%E6%8E%A2/"/>
+    <url>/2024/10/28/%E6%9F%90%E9%AB%98%E4%BD%93%E8%82%B2%E5%88%9D%E6%8E%A2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着博主的身体<em>日渐消瘦（肥）</em>，已经无法应对如同校园跑这种强度的运动（<br>并且加上近期学校对校园跑严加看管，于是便想着对这个体育APP下手了</p><h2 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h2><p>先大概看一下<br><img src="https://pub-32b6722f0bae40a5bac9b010e1164363.r2.dev/PixPin_2024-10-28_20-59-22.png" alt="别告诉我cf炸了"><br>x象加固， 没认真搞过的东西<br>尝试了各种dump手段，均以失败告终（甚至读不到dex结构）<br>最后掏出了我<em>珍藏的</em>安卓7.1.2源码，花了两个多小时一边逆向加固的so一边在art里实现绕过检测<br>成功还原dex</p><h2 id="定位检测"><a href="#定位检测" class="headerlink" title="定位检测"></a>定位检测</h2><p>已知当这个体育APP检测到Fake Location时会闪退<br>那就先搜索下包名<br><img src="https://pub-32b6722f0bae40a5bac9b010e1164363.r2.dev/PixPin_2024-10-28_21-01-17.png" alt="别告诉我cf炸了"><br>看一下引用<br><img src="https://pub-32b6722f0bae40a5bac9b010e1164363.r2.dev/PixPin_2024-10-28_21-01-47.png" alt="别告诉我cf炸了"><br>逻辑挺清晰哈</p><h2 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h2><p>这里写一个Xposed模块来过检测<br>基本代码如下<br><img src="https://pub-32b6722f0bae40a5bac9b010e1164363.r2.dev/PixPin_2024-10-28_21-02-44.png" alt="别告诉我cf炸了"><br><img src="https://pub-32b6722f0bae40a5bac9b010e1164363.r2.dev/PixPin_2024-10-28_21-02-51.png" alt="别告诉我cf炸了"><br>后续可能会增加各种功能 争取做出来一个能脱离这个APP跑步的程序</p><h2 id="项目-WIP"><a href="#项目-WIP" class="headerlink" title="项目 WIP"></a>项目 WIP</h2><p><a href="https://github.com/Tonyha7/CGSportBypass">CGSportBypass</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>某思路等考通开心版</title>
+    <link href="/2024/08/12/%E6%9F%90%E6%80%9D%E8%B7%AF%E7%AD%89%E8%80%83%E9%80%9A%E5%BC%80%E5%BF%83%E7%89%88/"/>
+    <url>/2024/08/12/%E6%9F%90%E6%80%9D%E8%B7%AF%E7%AD%89%E8%80%83%E9%80%9A%E5%BC%80%E5%BF%83%E7%89%88/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://imgsrc.baidu.com/forum/pic/item/42a98226cffc1e17f979f1100c90f603728de9c9.jpg" alt="百度图床都挂了？？？？？"></p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://tonyha7.lanzouj.com/ikPVz2773nfi">二级MS OFFICE</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>PC</tag>
+      
+      <tag>.NET</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>OpenWrt虚拟网卡多拨哆点Drcom校园网</title>
+    <link href="/2024/04/14/OpenWrt%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E5%A4%9A%E6%8B%A8%E5%93%86%E7%82%B9Drcom%E6%A0%A1%E5%9B%AD%E7%BD%91/"/>
+    <url>/2024/04/14/OpenWrt%E8%99%9A%E6%8B%9F%E7%BD%91%E5%8D%A1%E5%A4%9A%E6%8B%A8%E5%93%86%E7%82%B9Drcom%E6%A0%A1%E5%9B%AD%E7%BD%91/</url>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>博主苦于校园网限速50Mb长达数月 在各种方案的研究未果后 最终只得求助于单线多拨<br>已知校园网限制了同账号在线设备数为2个 那么本着<em>人多力量大</em>的原则 将每人的两个50Mb宽带叠加 就可以达到飞一般的网速</p><p>这里以一台小米AX3000T+20米六类网线为例 <strong>路由器需要自行安装macvlan和mwan3</strong> 分享下操作步骤及踩坑经验</p><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="创建虚拟网卡"><a href="#创建虚拟网卡" class="headerlink" title="创建虚拟网卡"></a>创建虚拟网卡</h3><p>连接ssh 执行下面的命令来新建网卡</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ip <span class="hljs-built_in">link</span> add <span class="hljs-built_in">link</span> eth0 name 网卡名称 <span class="hljs-built_in">type</span> macvlan<br></code></pre></td></tr></table></figure><p>这里我建立了5个虚拟网卡<br>给每个网卡建立接口 注意每个接口的跃点要不同<br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141625546d3909abb0145221.png"><br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141633546762e9ad7a048be5.png"><br>添加好后右下角保存并应用</p><h3 id="MultiWAN-配置"><a href="#MultiWAN-配置" class="headerlink" title="MultiWAN 配置"></a>MultiWAN 配置</h3><p>给每个刚才创建的接口创建MultiWAN 接口<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414163825ae3da26ddef2ec77.png"><br>启用接口并填入一个IP 判断是否能正常连接到外部网络<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414164028ac5f013d2ab02145.png"><br>每个都建好之后保存并应用</p><p>然后来到Member界面 把每个接口都添加一遍 跃点和权重留空或者填个默认的1就行<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414164708a39066f0176a75ab.png"></p><p>策略里添加一个balanced策略 把要用来多拨的成员添加进来 然后把每个成员单独创建一个策略用于登录<br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141655436ac078040f94b783.png"></p><p>规则第一条写校园网登录 协议全选 目的地填学校登录页 策略选要登录的成员策略<br><img src="https://file.moetu.org/images/2024/04/14/QQ202404141659108c668507c9c7f767.png"><br>其余两条按下图填即可<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414170223a8802929d9c71fb8.png"><br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414170254fa0ccd413b357d56.png"><br>保存应用重启 然后把每个成员逐个登陆校园网 测试下能否多拨</p><h2 id="后续配置"><a href="#后续配置" class="headerlink" title="后续配置"></a>后续配置</h2><p>当前配置下 每次启动路由器后 虚拟网卡都会新建mac地址<br>可以通过修改”&#x2F;etc&#x2F;config&#x2F;network”文件来固定mac<br><img src="https://file.moetu.org/images/2024/04/14/QQ20240414170710fb656f5cf9917db1.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>HBL - 一种不是特别新的bl伪装上锁方式</title>
+    <link href="/2024/01/19/HBL/"/>
+    <url>/2024/01/19/HBL/</url>
+    
+    <content type="html"><![CDATA[<h2 id="来由"><a href="#来由" class="headerlink" title="来由"></a>来由</h2><p>本人<em>去年十月</em>期间 参考了一些检测方式（包括不开源的）和安卓源码实现的小xp模块<br>目前还是比较强力的 可过密钥检测等</p><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p><a href="https://github.com/Tonyha7/HBL">已停更</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【补档】 记解包一个Unity引擎的视觉小说</title>
+    <link href="/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/"/>
+    <url>/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/</url>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于解包Unity引擎的资源 已经有不少优秀的开源工具<br>但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包<br>文章中可能有不当之处 还请大牛们多多包涵</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>dnspy打开游戏目录下的Assembly-CSharp.dll<br>先搜索游戏资源文件的后缀.dat<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png"><br>这个PRead的类比较像 进去看看有什么方法<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png"><br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png"><br>通过查看调用 大致能猜到这个字节数组Data返回的应该是文件<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png"><br>这个字典ti存储了文件名和文件的信息<br>大致流程是先new一个PRead(.dat文件路径) 然后通过传入文件名让Data返回文件的字节数组<br>有了这些 可以试试解包了</p><h3 id="写解包程序"><a href="#写解包程序" class="headerlink" title="写解包程序"></a>写解包程序</h3><p>vs新建个控制台项目 新建个PRead类<br>直接把dnspy反编译的代码粘贴过来<br>把需要用到的东西修饰符都改成public 防止访问不了<br><img src="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png"><br>然后模仿刚才的流程 把返回的字节数组用BinaryWriter写入文件</p><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&#123;<br>    PRead pRead;<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入dat完整路徑（如C:\\Games\\[蒼の彼方のフォーリズム][苍之彼方的四重奏][sprite]\\Aokana_Data\\sprites.dat）:&quot;</span>);<br>    String dat = Console.ReadLine();<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入輸出路徑（如F:/）:&quot;</span>);<br>    String outpath = Console.ReadLine();<br>    <br>    pRead = <span class="hljs-keyword">new</span> PRead(dat);<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">string</span> fileName <span class="hljs-keyword">in</span> pRead.ti.Keys) &#123;<br>    <span class="hljs-keyword">if</span> (!Directory.Exists(outpath))&#123;<br>            Directory.CreateDirectory(outpath);<br>        &#125;<br>        Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(outpath, fileName)));<br>        FileStream fs = <span class="hljs-keyword">new</span> FileStream(Path.Combine(outpath, fileName), FileMode.Create, FileAccess.Write);<br>        BinaryWriter binaryWriter = <span class="hljs-keyword">new</span> BinaryWriter(fs);<br>        <span class="hljs-built_in">byte</span>[] array = pRead.File(fileName);<br>        <span class="hljs-keyword">if</span> (array!=<span class="hljs-literal">null</span>)<br>        &#123;<br>            <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">byte</span> b <span class="hljs-keyword">in</span> array)<br>            &#123;<br>                binaryWriter.Write(b);<br>            &#125;<br>            binaryWriter.Close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><img src="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png"><br>搞定 这里解包的是bg.dat 其他文件有的有点辣眼睛 就不截图了</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>PC</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【补档】 某教育app获取作业答案</title>
+    <link href="/2023/11/12/%E6%9F%90%E6%95%99%E8%82%B2app%E8%8E%B7%E5%8F%96%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/"/>
+    <url>/2023/11/12/%E6%9F%90%E6%95%99%E8%82%B2app%E8%8E%B7%E5%8F%96%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学校买了个教育平板，用某教育app来上课 交作业 考试等<br>笔者<em>心生歹意</em>，便有了以下研究<br>为了保护我自己，账号的各种信息经过打码&#x2F;修改等处理。</p><h2 id="研究app"><a href="#研究app" class="headerlink" title="研究app"></a>研究app</h2><h3 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h3><p>当启动时，app会获取设备mac地址，并向平板的MDM发送广播来获取设备SN号，以验证此设备是否为账户绑定的设备。</p><h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><p>话不多说，直接开抓。<br>首先来看登录的部分<br><img src="https://s1.ax1x.com/2022/03/30/qgiGX4.png"><br>可以看出提交了账号 auth mac地址 安卓API 获取到的SN 时间戳 key等信息<br>把时间戳和key删掉 同样可以正常返回数据<br>来看返回的json<br><img src="https://s1.ax1x.com/2022/03/30/qgi8cF.png"><br>里面包含了各种信息</p><h3 id="auth原理"><a href="#auth原理" class="headerlink" title="auth原理"></a>auth原理</h3><p>看起来是32位的md5<br>我们来看看app 从启动的Activity一直往下看<br>最终发现了这个<br><img src="https://s1.ax1x.com/2022/03/30/qgFqMD.png"><br>可以看出，auth应该是账号+密码+HHOO用md5计算而来的</p><h2 id="伪造登录"><a href="#伪造登录" class="headerlink" title="伪造登录"></a>伪造登录</h2><p>用python写个简单的发包并获取数据的程序</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> webbrowser<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">string_to_md5</span>(<span class="hljs-params">string</span>):<br>    md5_val = hashlib.md5(string.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)).hexdigest()<br>    <span class="hljs-keyword">return</span> md5_val<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">open_url</span>(<span class="hljs-params">url</span>):<br>    webbrowser.open_new(url)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">post</span>(<span class="hljs-params">postdata,ua</span>):<br>    headers = &#123;<span class="hljs-string">&#x27;user-agent&#x27;</span>: ua&#125;<br>    <span class="hljs-keyword">try</span>:<br>        req=requests.post(url=<span class="hljs-string">&quot;https://padapp.msyk.cn/ws/app/padLogin&quot;</span>,data=postdata,headers=headers)<br>        <span class="hljs-keyword">return</span> req.text<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;网络异常&quot;</span>)<br>        exit(<span class="hljs-number">1</span>)<br><br>user=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;用户名:&quot;</span>)<br>pwd=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;密码:&quot;</span>)<br>mac=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;mac:&quot;</span>).upper<br>api=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;安卓API:&quot;</span>)<br>sn=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;SN(区分大小写):&quot;</span>)<br>dataup=&#123;<span class="hljs-string">&quot;userName&quot;</span>:user,<span class="hljs-string">&quot;auth&quot;</span>:string_to_md5(user+pwd+<span class="hljs-string">&quot;HHOO&quot;</span>),<span class="hljs-string">&quot;macAddress&quot;</span>:mac,<span class="hljs-string">&quot;versionCode&quot;</span>:api,<span class="hljs-string">&quot;sn&quot;</span>:sn&#125;<br>res=post(dataup,<span class="hljs-string">&quot;okhttp/3.12.1&quot;</span>)<br><br><span class="hljs-keyword">if</span> json.loads(res).get(<span class="hljs-string">&#x27;code&#x27;</span>)==<span class="hljs-string">&quot;10000&quot;</span>:<br>    avatar=json.loads(res).get(<span class="hljs-string">&#x27;InfoMap&#x27;</span>).get(<span class="hljs-string">&#x27;avatarUrl&#x27;</span>)<br>    open_url(avatar)<br>    <span class="hljs-built_in">print</span>(res)<br>    exit(<span class="hljs-number">0</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(json.loads(res).get(<span class="hljs-string">&#x27;message&#x27;</span>))<br>    exit(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure><p>（代码混乱 轻喷）<br><img src="https://s1.ax1x.com/2022/03/30/qgAf41.jpg"></p><h2 id="获取作业信息"><a href="#获取作业信息" class="headerlink" title="获取作业信息"></a>获取作业信息</h2><p>来看看这是如何获取作业信息的<br><img src="https://s1.ax1x.com/2022/03/30/qgEjZ4.png"><br>这里去掉了时间戳和key，同样可以正常返回数据<br><img src="https://s1.ax1x.com/2022/03/30/qgEvdJ.png"><br>这里会返回一个resourceList 里面存有各题的id</p><h2 id="看答案"><a href="#看答案" class="headerlink" title="看答案"></a>看答案</h2><p>随便找一个能查看答案的作业，发现是webview打开的网页<br>格式如下：</p><figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">https://www.msyk.cn/webview/newQuestion/singleDoHomework?studentId=xxx<span class="hljs-variable">&amp;homeworkResourceId</span>=xxx<span class="hljs-variable">&amp;orderNum</span>=题号<span class="hljs-variable">&amp;showAnswer</span>=1<span class="hljs-variable">&amp;unitId</span>=xxx<span class="hljs-variable">&amp;modifyNum</span>=1<br></code></pre></td></tr></table></figure><p>其中studentId和unitId能从登录的返回信息中获取<br>homeworkResourceId为resourceList里题目的id<br>直接在浏览器中打开网页查看<br><img src="https://s1.ax1x.com/2022/03/30/qgJ5oq.jpg"><br><img src="https://s1.ax1x.com/2022/03/30/qgJTYV.jpg"><br>代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> webbrowser<br><span class="hljs-comment">#字符计算32位md5</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">string_to_md5</span>(<span class="hljs-params">string</span>):<br>    md5_val = hashlib.md5(string.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)).hexdigest()<br>    <span class="hljs-keyword">return</span> md5_val<br><span class="hljs-comment">#浏览器新窗口打开链接</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">open_url</span>(<span class="hljs-params">url</span>):<br>    webbrowser.open_new(url)<br><span class="hljs-comment">#模拟登录获取用户信息</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">loginpost</span>(<span class="hljs-params">postdata</span>):<br>    headers = &#123;<span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&quot;okhttp/3.12.1&quot;</span>&#125;<br>    <span class="hljs-keyword">try</span>:<br>        req=requests.post(url=<span class="hljs-string">&quot;https://padapp.msyk.cn/ws/app/padLogin&quot;</span>,data=postdata,headers=headers)<br>        <span class="hljs-keyword">return</span> req.text<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;网络异常&quot;</span>)<br>        exit(<span class="hljs-number">1</span>)<br><span class="hljs-comment">#获取作业信息</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">anspost</span>(<span class="hljs-params">postdata</span>):<br>    headers = &#123;<span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&quot;okhttp/3.12.1&quot;</span>&#125;<br>    <span class="hljs-keyword">try</span>:<br>        req=requests.post(url=<span class="hljs-string">&quot;https://padapp.msyk.cn/ws/common/homework/homeworkStatus&quot;</span>,data=postdata,headers=headers)<br>        <span class="hljs-keyword">return</span> req.text<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;网络异常&quot;</span>)<br>        exit(<span class="hljs-number">1</span>)<br><br>user=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;用户名:&quot;</span>)<br>pwd=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;密码:&quot;</span>)<br>mac=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;mac:&quot;</span>).upper<span class="hljs-comment">#mac地址要大写</span><br>api=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;安卓API:&quot;</span>)<br>sn=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;SN(区分大小写):&quot;</span>)<br>dataup=&#123;<span class="hljs-string">&quot;userName&quot;</span>:user,<span class="hljs-string">&quot;auth&quot;</span>:string_to_md5(user+pwd+<span class="hljs-string">&quot;HHOO&quot;</span>),<span class="hljs-string">&quot;macAddress&quot;</span>:mac,<span class="hljs-string">&quot;versionCode&quot;</span>:api,<span class="hljs-string">&quot;sn&quot;</span>:sn&#125;<br>res=loginpost(dataup)<br><span class="hljs-comment">#成功登录 获取账号信息</span><br><span class="hljs-keyword">if</span> json.loads(res).get(<span class="hljs-string">&#x27;code&#x27;</span>)==<span class="hljs-string">&quot;10000&quot;</span>:<br>    avatar=json.loads(res).get(<span class="hljs-string">&#x27;InfoMap&#x27;</span>).get(<span class="hljs-string">&#x27;avatarUrl&#x27;</span>)<br>    open_url(avatar)<span class="hljs-comment">#浏览器打开头像（同时测试能否正常打开浏览器）</span><br>    <span class="hljs-built_in">print</span>(res)<br>    unitId=json.loads(res).get(<span class="hljs-string">&#x27;InfoMap&#x27;</span>).get(<span class="hljs-string">&#x27;unitId&#x27;</span>)<br>    <span class="hljs-built_in">id</span>=json.loads(res).get(<span class="hljs-string">&#x27;InfoMap&#x27;</span>).get(<span class="hljs-string">&#x27;id&#x27;</span>)<br><span class="hljs-comment">#登录失败 打印原因</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(json.loads(res).get(<span class="hljs-string">&#x27;message&#x27;</span>))<br>    exit(<span class="hljs-number">1</span>)<br><br>hwid=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;作业id:&quot;</span>)<br>dataup=&#123;<span class="hljs-string">&quot;homeworkId&quot;</span>:hwid,<span class="hljs-string">&quot;modifyNum&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;userId&quot;</span>:<span class="hljs-built_in">id</span>,<span class="hljs-string">&quot;unitId&quot;</span>:unitId&#125;<br>res=anspost(dataup)<br>hwname=json.loads(res).get(<span class="hljs-string">&#x27;homeworkName&#x27;</span>)<br><span class="hljs-built_in">print</span>(hwname)<span class="hljs-comment">#作业名</span><br>reslist=json.loads(res).get(<span class="hljs-string">&#x27;resourceList&#x27;</span>)<span class="hljs-comment">#题目list</span><br>list_b = []<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> reslist:<br>    count=<span class="hljs-number">1</span><br>    <span class="hljs-comment">#浏览器打开带答案的网页</span><br>    open_url(<span class="hljs-string">&quot;https://www.msyk.cn/webview/newQuestion/singleDoHomework?studentId=&quot;</span>+<span class="hljs-built_in">id</span>+<span class="hljs-string">&quot;&amp;homeworkResourceId=&quot;</span>+<span class="hljs-built_in">str</span>(item[<span class="hljs-string">&#x27;id&#x27;</span>])+<span class="hljs-string">&quot;&amp;orderNum=&quot;</span>+<span class="hljs-built_in">str</span>(count)+<span class="hljs-string">&quot;&amp;showAnswer=1&amp;unitId=&quot;</span>+unitId+<span class="hljs-string">&quot;&amp;modifyNum=1&quot;</span>)<br>    count=count+<span class="hljs-number">1</span><span class="hljs-comment">#题号滚动</span><br>    list_b.append(item[<span class="hljs-string">&#x27;id&#x27;</span>])<br><span class="hljs-built_in">print</span>(list_b)<span class="hljs-comment">#打印题目id列表</span><br></code></pre></td></tr></table></figure><p>大功告成</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络</tag>
+      
+      <tag>逆向</tag>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>原创 FreeMyVip模块</title>
+    <link href="/2023/10/03/%E5%8E%9F%E5%88%9B-FreeMyVip%E6%A8%A1%E5%9D%97/"/>
+    <url>/2023/10/03/%E5%8E%9F%E5%88%9B-FreeMyVip%E6%A8%A1%E5%9D%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="https://file.moetu.org/images/2022/12/15/QQ202212152021328575453c698f5ab8.png"></p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="http://freemyvip.tonyha7.com/">永久地址</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>安卓</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2023/10/03/hello-world/"/>
+    <url>/2023/10/03/hello-world/</url>
+    
+    <content type="html"><![CDATA[<h2 id="又搬家了-以前的文章慢慢补档吧"><a href="#又搬家了-以前的文章慢慢补档吧" class="headerlink" title="又搬家了 以前的文章慢慢补档吧"></a>又搬家了 以前的文章慢慢补档吧</h2>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>

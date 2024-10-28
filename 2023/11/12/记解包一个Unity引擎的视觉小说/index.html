@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="th7">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言对于解包Unity引擎的资源 已经有不少优秀的开源工具但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包文章中可能有不当之处 还请大牛们多多包涵 分析dnspy打开游戏目录下的Assembly-CSharp.dll先搜索游戏资源文件的后缀.dat这个PRead的类比较像 进去看看有什么方法通过查看调用 大致能猜到这个字节数组Data返回的应该是文件这个字典ti存储了文件名和文件的信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【补档】 记解包一个Unity引擎的视觉小说">
+<meta property="og:url" content="https://www.tonyha7.com/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/index.html">
+<meta property="og:site_name" content="th7的小窝">
+<meta property="og:description" content="前言对于解包Unity引擎的资源 已经有不少优秀的开源工具但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包文章中可能有不当之处 还请大牛们多多包涵 分析dnspy打开游戏目录下的Assembly-CSharp.dll先搜索游戏资源文件的后缀.dat这个PRead的类比较像 进去看看有什么方法通过查看调用 大致能猜到这个字节数组Data返回的应该是文件这个字典ti存储了文件名和文件的信">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png">
+<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png">
+<meta property="article:published_time" content="2023-11-12T04:20:46.000Z">
+<meta property="article:modified_time" content="2024-10-24T14:37:01.963Z">
+<meta property="article:author" content="th7">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="PC">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
+  
+  
+  
+  <title>【补档】 记解包一个Unity引擎的视觉小说 - th7的小窝</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.tonyha7.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>th7的小窝</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【补档】 记解包一个Unity引擎的视觉小说"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-12 12:20" pubdate>
+          2023年11月12日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【补档】 记解包一个Unity引擎的视觉小说</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于解包Unity引擎的资源 已经有不少优秀的开源工具<br>但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包<br>文章中可能有不当之处 还请大牛们多多包涵</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>dnspy打开游戏目录下的Assembly-CSharp.dll<br>先搜索游戏资源文件的后缀.dat<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png" srcset="/img/loading.gif" lazyload><br>这个PRead的类比较像 进去看看有什么方法<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png" srcset="/img/loading.gif" lazyload><br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png" srcset="/img/loading.gif" lazyload><br>通过查看调用 大致能猜到这个字节数组Data返回的应该是文件<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png" srcset="/img/loading.gif" lazyload><br>这个字典ti存储了文件名和文件的信息<br>大致流程是先new一个PRead(.dat文件路径) 然后通过传入文件名让Data返回文件的字节数组<br>有了这些 可以试试解包了</p>
+<h3 id="写解包程序"><a href="#写解包程序" class="headerlink" title="写解包程序"></a>写解包程序</h3><p>vs新建个控制台项目 新建个PRead类<br>直接把dnspy反编译的代码粘贴过来<br>把需要用到的东西修饰符都改成public 防止访问不了<br><img src="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png" srcset="/img/loading.gif" lazyload><br>然后模仿刚才的流程 把返回的字节数组用BinaryWriter写入文件</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&#123;<br>    PRead pRead;<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入dat完整路徑（如C:\\Games\\[蒼の彼方のフォーリズム][苍之彼方的四重奏][sprite]\\Aokana_Data\\sprites.dat）:&quot;</span>);<br>    String dat = Console.ReadLine();<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入輸出路徑（如F:/）:&quot;</span>);<br>    String outpath = Console.ReadLine();<br>    <br>    pRead = <span class="hljs-keyword">new</span> PRead(dat);<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">string</span> fileName <span class="hljs-keyword">in</span> pRead.ti.Keys) &#123;<br>    <span class="hljs-keyword">if</span> (!Directory.Exists(outpath))&#123;<br>            Directory.CreateDirectory(outpath);<br>        &#125;<br>        Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(outpath, fileName)));<br>        FileStream fs = <span class="hljs-keyword">new</span> FileStream(Path.Combine(outpath, fileName), FileMode.Create, FileAccess.Write);<br>        BinaryWriter binaryWriter = <span class="hljs-keyword">new</span> BinaryWriter(fs);<br>        <span class="hljs-built_in">byte</span>[] array = pRead.File(fileName);<br>        <span class="hljs-keyword">if</span> (array!=<span class="hljs-literal">null</span>)<br>        &#123;<br>            <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">byte</span> b <span class="hljs-keyword">in</span> array)<br>            &#123;<br>                binaryWriter.Write(b);<br>            &#125;<br>            binaryWriter.Close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png" srcset="/img/loading.gif" lazyload><br>搞定 这里解包的是bg.dat 其他文件有的有点辣眼睛 就不截图了</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%86%E5%90%91/" class="print-no-link">#逆向</a>
+      
+        <a href="/tags/PC/" class="print-no-link">#PC</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【补档】 记解包一个Unity引擎的视觉小说</div>
+      <div>https://www.tonyha7.com/2023/11/12/记解包一个Unity引擎的视觉小说/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>th7</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/19/HBL/" title="HBL - 一种不是特别新的bl伪装上锁方式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HBL - 一种不是特别新的bl伪装上锁方式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/12/%E6%9F%90%E6%95%99%E8%82%B2app%E8%8E%B7%E5%8F%96%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/" title="【补档】 某教育app获取作业答案">
+                        <span class="hidden-mobile">【补档】 某教育app获取作业答案</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

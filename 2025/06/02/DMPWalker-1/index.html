@@ -16,29 +16,29 @@
   <meta name="author" content="th7">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言随着博主的身体日渐消瘦（肥），已经无法应对如同校园跑这种强度的运动（并且加上近期学校对校园跑严加看管，于是便想着对这个体育APP下手了 脱壳先大概看一下x象加固， 没认真搞过的东西尝试了各种dump手段，均以失败告终（甚至读不到dex结构）最后掏出了我珍藏的安卓7.1.2源码，花了两个多小时一边逆向加固的so一边在art里实现绕过检测成功还原dex 定位检测已知当这个体育APP检测到Fake">
+    <meta name="description" content="前言最近在研究dll注入 为了方便比较注入前后的程序区别 在Claude的加持下写了个从内存转储文件中读取二进制文件的小工具DMPWalker接下来演示下破解垃圾外挂程序以淘宝销量最高的大地球为例 花了三元巨款买了张天卡 过程首先正常登录辅助 加载功能 等待功能完全加载后 从任务管理器中右键创建内存转储文件这里窗口在截图时没显示 然后使用DMPWalker来从这个DMP文件中获取可执行文件 其中有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="某高体育初探">
-<meta property="og:url" content="https://www.tonyha7.com/2024/10/28/%E6%9F%90%E9%AB%98%E4%BD%93%E8%82%B2%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:title" content="DMPWalker实战破解垃圾外挂">
+<meta property="og:url" content="https://www.tonyha7.com/2025/06/02/DMPWalker-1/index.html">
 <meta property="og:site_name" content="th7的小窝">
-<meta property="og:description" content="前言随着博主的身体日渐消瘦（肥），已经无法应对如同校园跑这种强度的运动（并且加上近期学校对校园跑严加看管，于是便想着对这个体育APP下手了 脱壳先大概看一下x象加固， 没认真搞过的东西尝试了各种dump手段，均以失败告终（甚至读不到dex结构）最后掏出了我珍藏的安卓7.1.2源码，花了两个多小时一边逆向加固的so一边在art里实现绕过检测成功还原dex 定位检测已知当这个体育APP检测到Fake">
+<meta property="og:description" content="前言最近在研究dll注入 为了方便比较注入前后的程序区别 在Claude的加持下写了个从内存转储文件中读取二进制文件的小工具DMPWalker接下来演示下破解垃圾外挂程序以淘宝销量最高的大地球为例 花了三元巨款买了张天卡 过程首先正常登录辅助 加载功能 等待功能完全加载后 从任务管理器中右键创建内存转储文件这里窗口在截图时没显示 然后使用DMPWalker来从这个DMP文件中获取可执行文件 其中有">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2024-10-28_20-59-22.png">
-<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-01-17.png">
-<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-01-47.png">
-<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-02-44.png">
-<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-02-51.png">
-<meta property="article:published_time" content="2024-10-28T13:03:41.000Z">
-<meta property="article:modified_time" content="2025-03-23T11:54:18.460Z">
+<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-26-54.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-27-38.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/f625bc45-200c-4489-884f-896e75179328.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-30-56.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/30BDCAAC461BEC6B0306D2C323A878CF.jpg">
+<meta property="article:published_time" content="2025-06-02T05:19:51.000Z">
+<meta property="article:modified_time" content="2025-06-02T05:40:59.542Z">
 <meta property="article:author" content="th7">
 <meta property="article:tag" content="逆向">
-<meta property="article:tag" content="安卓">
+<meta property="article:tag" content="PC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://rcdn.tonyha7.com/PixPin_2024-10-28_20-59-22.png">
+<meta name="twitter:image" content="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-26-54.png">
   
   
   
-  <title>某高体育初探 - th7的小窝</title>
+  <title>DMPWalker实战破解垃圾外挂 - th7的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="某高体育初探"></span>
+            <span id="subtitle" data-typed-text="DMPWalker实战破解垃圾外挂"></span>
           
         </div>
 
@@ -215,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-28 21:03" pubdate>
-          2024年10月28日 晚上
+        <time datetime="2025-06-02 13:19" pubdate>
+          2025年6月2日 下午
         </time>
       </span>
     
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          303 字
+          238 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -275,16 +275,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">某高体育初探</h1>
+            <h1 id="seo-header">DMPWalker实战破解垃圾外挂</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着博主的身体<em>日渐消瘦（肥）</em>，已经无法应对如同校园跑这种强度的运动（<br>并且加上近期学校对校园跑严加看管，于是便想着对这个体育APP下手了</p>
-<h2 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h2><p>先大概看一下<br><img src="https://rcdn.tonyha7.com/PixPin_2024-10-28_20-59-22.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br>x象加固， 没认真搞过的东西<br>尝试了各种dump手段，均以失败告终（甚至读不到dex结构）<br>最后掏出了我<em>珍藏的</em>安卓7.1.2源码，花了两个多小时一边逆向加固的so一边在art里实现绕过检测<br>成功还原dex</p>
-<h2 id="定位检测"><a href="#定位检测" class="headerlink" title="定位检测"></a>定位检测</h2><p>已知当这个体育APP检测到Fake Location时会闪退<br>那就先搜索下包名<br><img src="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-01-17.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br>看一下引用<br><img src="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-01-47.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br>逻辑挺清晰哈</p>
-<h2 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h2><p>这里写一个Xposed模块来过检测<br>基本代码如下<br><img src="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-02-44.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br><img src="https://rcdn.tonyha7.com/PixPin_2024-10-28_21-02-51.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br>后续可能会增加各种功能 争取做出来一个能脱离这个APP跑步的程序</p>
-<h2 id="项目-WIP"><a href="#项目-WIP" class="headerlink" title="项目 WIP"></a>项目 WIP</h2><p><a target="_blank" rel="noopener" href="https://github.com/Tonyha7/CGSportBypass">CGSportBypass</a></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在研究dll注入 为了方便比较注入前后的程序区别 在Claude的加持下写了个从内存转储文件中读取二进制文件的小工具<br><a target="_blank" rel="noopener" href="https://github.com/Tonyha7/DMPWalker">DMPWalker</a><br>接下来演示下破解垃圾外挂程序<br>以淘宝销量最高的大地球为例 <strong>花了三元巨款买了张天卡</strong></p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>首先正常登录辅助 加载功能<br><img src="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-26-54.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br><img src="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-27-38.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"></p>
+<p>等待功能完全加载后 从任务管理器中右键创建内存转储文件<br>这里窗口在截图时没显示<br><img src="https://rcdn.tonyha7.com/f625bc45-200c-4489-884f-896e75179328.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"></p>
+<p>然后使用DMPWalker来从这个DMP文件中获取可执行文件<br><img src="https://rcdn.tonyha7.com/PixPin_2025-06-02_13-30-56.png" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"></p>
+<p>其中有两个exe文件<br>一个是这个外挂的登录程序 另一个是这个外挂的功能<br><strong>（对的 这个外挂是纯外部的）</strong><br>破解完成<br><img src="https://rcdn.tonyha7.com/30BDCAAC461BEC6B0306D2C323A878CF.jpg" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"></p>
 
                 
               </div>
@@ -299,7 +299,7 @@
       
         <a href="/tags/%E9%80%86%E5%90%91/" class="print-no-link">#逆向</a>
       
-        <a href="/tags/%E5%AE%89%E5%8D%93/" class="print-no-link">#安卓</a>
+        <a href="/tags/PC/" class="print-no-link">#PC</a>
       
     </div>
   
@@ -311,8 +311,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>某高体育初探</div>
-      <div>https://www.tonyha7.com/2024/10/28/某高体育初探/</div>
+      <div>DMPWalker实战破解垃圾外挂</div>
+      <div>https://www.tonyha7.com/2025/06/02/DMPWalker-1/</div>
     </div>
     <div class="license-meta">
       
@@ -324,7 +324,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月28日</div>
+          <div>2025年6月2日</div>
         </div>
       
       
@@ -356,18 +356,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/08/GA-B85-HD3-A/" title="魔改技嘉B85-HD3-A BIOS 添加NVMe启动支持">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">魔改技嘉B85-HD3-A BIOS 添加NVMe启动支持</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/12/%E6%9F%90%E6%80%9D%E8%B7%AF%E7%AD%89%E8%80%83%E9%80%9A%E5%BC%80%E5%BF%83%E7%89%88/" title="某思路等考通开心版">
-                        <span class="hidden-mobile">某思路等考通开心版</span>
+                      <a href="/2024/12/14/tb300fu-1/" title="Lenovo Tab M8 (4th Gen) 玩机 第一章">
+                        <span class="hidden-mobile">Lenovo Tab M8 (4th Gen) 玩机 第一章</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

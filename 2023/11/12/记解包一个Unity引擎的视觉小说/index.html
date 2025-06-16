@@ -23,19 +23,19 @@
 <meta property="og:site_name" content="th7的小窝">
 <meta property="og:description" content="前言对于解包Unity引擎的资源 已经有不少优秀的开源工具但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包文章中可能有不当之处 还请大牛们多多包涵 分析dnspy打开游戏目录下的Assembly-CSharp.dll先搜索游戏资源文件的后缀.dat这个PRead的类比较像 进去看看有什么方法通过查看调用 大致能猜到这个字节数组Data返回的应该是文件这个字典ti存储了文件名和文件的信">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
-<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png">
-<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png">
-<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png">
-<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png">
-<meta property="og:image" content="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/devenv_zvHOSQRSeZab0e69bfdb9b9953.png">
+<meta property="og:image" content="https://rcdn.tonyha7.com/explorer_0qjQFyVUaZf149a060d354a930.png">
 <meta property="article:published_time" content="2023-11-12T04:20:46.000Z">
-<meta property="article:modified_time" content="2024-10-24T14:37:01.963Z">
+<meta property="article:modified_time" content="2025-06-16T09:15:39.384Z">
 <meta property="article:author" content="th7">
 <meta property="article:tag" content="逆向">
 <meta property="article:tag" content="PC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
+<meta name="twitter:image" content="https://rcdn.tonyha7.com/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png">
   
   
   
@@ -282,10 +282,10 @@
               <div class="markdown-body">
                 
                 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>对于解包Unity引擎的资源 已经有不少优秀的开源工具<br>但是这款游戏是厂商自己实现的资源加密 这几天有空就研究了下解包<br>文章中可能有不当之处 还请大牛们多多包涵</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>dnspy打开游戏目录下的Assembly-CSharp.dll<br>先搜索游戏资源文件的后缀.dat<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png" srcset="/img/loading.gif" lazyload><br>这个PRead的类比较像 进去看看有什么方法<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png" srcset="/img/loading.gif" lazyload><br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png" srcset="/img/loading.gif" lazyload><br>通过查看调用 大致能猜到这个字节数组Data返回的应该是文件<br><img src="https://file.moetu.org/images/2022/11/26/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png" srcset="/img/loading.gif" lazyload><br>这个字典ti存储了文件名和文件的信息<br>大致流程是先new一个PRead(.dat文件路径) 然后通过传入文件名让Data返回文件的字节数组<br>有了这些 可以试试解包了</p>
-<h3 id="写解包程序"><a href="#写解包程序" class="headerlink" title="写解包程序"></a>写解包程序</h3><p>vs新建个控制台项目 新建个PRead类<br>直接把dnspy反编译的代码粘贴过来<br>把需要用到的东西修饰符都改成public 防止访问不了<br><img src="https://file.moetu.org/images/2022/11/26/devenv_zvHOSQRSeZab0e69bfdb9b9953.png" srcset="/img/loading.gif" lazyload><br>然后模仿刚才的流程 把返回的字节数组用BinaryWriter写入文件</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>dnspy打开游戏目录下的Assembly-CSharp.dll<br>先搜索游戏资源文件的后缀.dat<br><img src="https://rcdn.tonyha7.com/dnSpy-x86_oCjyqTIGRnaefed6e10a789eb1.png" srcset="/img/loading.gif" lazyload><br>这个PRead的类比较像 进去看看有什么方法<br><img src="https://rcdn.tonyha7.com/dnSpy-x86_Jl2t8NjnBPb5ba1d2aebd78d8c.png" srcset="/img/loading.gif" lazyload><br><img src="https://rcdn.tonyha7.com/dnSpy-x86_p4u28k3sr4034aaa9476c4d94f.png" srcset="/img/loading.gif" lazyload><br>通过查看调用 大致能猜到这个字节数组Data返回的应该是文件<br><img src="https://rcdn.tonyha7.com/dnSpy-x86_CcVXyDnpxHdf6726a9754fadae.png" srcset="/img/loading.gif" lazyload><br>这个字典ti存储了文件名和文件的信息<br>大致流程是先new一个PRead(.dat文件路径) 然后通过传入文件名让Data返回文件的字节数组<br>有了这些 可以试试解包了</p>
+<h3 id="写解包程序"><a href="#写解包程序" class="headerlink" title="写解包程序"></a>写解包程序</h3><p>vs新建个控制台项目 新建个PRead类<br>直接把dnspy反编译的代码粘贴过来<br>把需要用到的东西修饰符都改成public 防止访问不了<br><img src="https://rcdn.tonyha7.com/devenv_zvHOSQRSeZab0e69bfdb9b9953.png" srcset="/img/loading.gif" lazyload><br>然后模仿刚才的流程 把返回的字节数组用BinaryWriter写入文件</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>&#123;<br>    PRead pRead;<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入dat完整路徑（如C:\\Games\\[蒼の彼方のフォーリズム][苍之彼方的四重奏][sprite]\\Aokana_Data\\sprites.dat）:&quot;</span>);<br>    String dat = Console.ReadLine();<br>    Console.WriteLine(<span class="hljs-string">&quot;鍵入輸出路徑（如F:/）:&quot;</span>);<br>    String outpath = Console.ReadLine();<br>    <br>    pRead = <span class="hljs-keyword">new</span> PRead(dat);<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">string</span> fileName <span class="hljs-keyword">in</span> pRead.ti.Keys) &#123;<br>    <span class="hljs-keyword">if</span> (!Directory.Exists(outpath))&#123;<br>            Directory.CreateDirectory(outpath);<br>        &#125;<br>        Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(outpath, fileName)));<br>        FileStream fs = <span class="hljs-keyword">new</span> FileStream(Path.Combine(outpath, fileName), FileMode.Create, FileAccess.Write);<br>        BinaryWriter binaryWriter = <span class="hljs-keyword">new</span> BinaryWriter(fs);<br>        <span class="hljs-built_in">byte</span>[] array = pRead.File(fileName);<br>        <span class="hljs-keyword">if</span> (array!=<span class="hljs-literal">null</span>)<br>        &#123;<br>            <span class="hljs-keyword">foreach</span> (<span class="hljs-built_in">byte</span> b <span class="hljs-keyword">in</span> array)<br>            &#123;<br>                binaryWriter.Write(b);<br>            &#125;<br>            binaryWriter.Close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="https://file.moetu.org/images/2022/11/26/explorer_0qjQFyVUaZf149a060d354a930.png" srcset="/img/loading.gif" lazyload><br>搞定 这里解包的是bg.dat 其他文件有的有点辣眼睛 就不截图了</p>
+<p><img src="https://rcdn.tonyha7.com/explorer_0qjQFyVUaZf149a060d354a930.png" srcset="/img/loading.gif" lazyload><br>搞定 这里解包的是bg.dat 其他文件有的有点辣眼睛 就不截图了</p>
 
                 
               </div>

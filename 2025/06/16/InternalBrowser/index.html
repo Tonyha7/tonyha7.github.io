@@ -16,21 +16,36 @@
   <meta name="author" content="th7">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="标签 - PC">
-<meta property="og:url" content="https://www.tonyha7.com/tags/PC/index.html">
+    <meta name="description" content="简介目前还比较简陋 玩具属性多一些需要依次将WebView2Loader.dll以及InternalBrowser.dll注入到对应的进程中右键标签页可以关闭按Ctrl+Q可以一键关闭浏览器窗口（全局快捷键）自带防截图 整合包直链蓝奏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="注入式WebView2浏览器">
+<meta property="og:url" content="https://www.tonyha7.com/2025/06/16/InternalBrowser/index.html">
 <meta property="og:site_name" content="th7的小窝">
+<meta property="og:description" content="简介目前还比较简陋 玩具属性多一些需要依次将WebView2Loader.dll以及InternalBrowser.dll注入到对应的进程中右键标签页可以关闭按Ctrl+Q可以一键关闭浏览器窗口（全局快捷键）自带防截图 整合包直链蓝奏">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rcdn.tonyha7.com/C44B99ACF541BD24A8805AD98B64BF9D.jpg">
+<meta property="article:published_time" content="2025-06-16T08:25:39.000Z">
+<meta property="article:modified_time" content="2025-06-16T09:18:59.322Z">
 <meta property="article:author" content="th7">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="PC">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rcdn.tonyha7.com/C44B99ACF541BD24A8805AD98B64BF9D.jpg">
   
   
   
-  <title>标签 - PC - th7的小窝</title>
+  <title>注入式WebView2浏览器 - th7的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -80,7 +95,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 80vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -186,17 +201,53 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="标签 - PC"></span>
+            <span id="subtitle" data-typed-text="注入式WebView2浏览器"></span>
           
         </div>
 
         
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-16 16:25" pubdate>
+          2025年6月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          115 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          1 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
 
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
       
     </div>
   </div>
@@ -208,64 +259,168 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-  
-    
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      <p class="h5">2025</p>
-    
-    <a href="/2025/06/16/InternalBrowser/" class="list-group-item list-group-item-action">
-      <time>06-16</time>
-      <div class="list-group-item-title">注入式WebView2浏览器</div>
-    </a>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">注入式WebView2浏览器</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><img src="https://rcdn.tonyha7.com/C44B99ACF541BD24A8805AD98B64BF9D.jpg" srcset="/img/loading.gif" lazyload alt="别告诉我cf炸了"><br>目前还比较简陋 玩具属性多一些<br>需要<strong>依次</strong>将WebView2Loader.dll以及InternalBrowser.dll注入到对应的进程中<br>右键标签页可以关闭<br>按Ctrl+Q可以一键关闭浏览器窗口（全局快捷键）<br>自带防截图</p>
+<h2 id="整合包"><a href="#整合包" class="headerlink" title="整合包"></a>整合包</h2><p><a target="_blank" rel="noopener" href="https://rcdn.tonyha7.com/InternalBrowser.zip">直链</a><br><a target="_blank" rel="noopener" href="https://tonyha7.lanzouu.com/ipXK72yx87yj">蓝奏</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-    
-    <a href="/2025/06/02/DMPWalker-1/" class="list-group-item list-group-item-action">
-      <time>06-02</time>
-      <div class="list-group-item-title">DMPWalker实战破解垃圾外挂</div>
-    </a>
   
-    
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-      <p class="h5">2024</p>
-    
-    <a href="/2024/08/12/%E6%9F%90%E6%80%9D%E8%B7%AF%E7%AD%89%E8%80%83%E9%80%9A%E5%BC%80%E5%BF%83%E7%89%88/" class="list-group-item list-group-item-action">
-      <time>08-12</time>
-      <div class="list-group-item-title">某思路等考通开心版</div>
-    </a>
-  
-    
+        <a href="/tags/%E9%80%86%E5%90%91/" class="print-no-link">#逆向</a>
       
-      <p class="h5">2023</p>
-    
-    <a href="/2023/11/12/%E8%AE%B0%E8%A7%A3%E5%8C%85%E4%B8%80%E4%B8%AAUnity%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%86%E8%A7%89%E5%B0%8F%E8%AF%B4/" class="list-group-item list-group-item-action">
-      <time>11-12</time>
-      <div class="list-group-item-title">【补档】 记解包一个Unity引擎的视觉小说</div>
-    </a>
+        <a href="/tags/PC/" class="print-no-link">#PC</a>
+      
+        <a href="/tags/Windows/" class="print-no-link">#Windows</a>
+      
+    </div>
   
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>注入式WebView2浏览器</div>
+      <div>https://www.tonyha7.com/2025/06/16/InternalBrowser/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>th7</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/02/DMPWalker-1/" title="DMPWalker实战破解垃圾外挂">
+                        <span class="hidden-mobile">DMPWalker实战破解垃圾外挂</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
 </div>
 
 
 
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -359,6 +514,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>Hook雷某加速器阻止暴力写日志</title>
+    <link href="/2026/03/23/leig0d/"/>
+    <url>/2026/03/23/leig0d/</url>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><img src="https://rcdn.tonyha7.com/88011238-a537-47cd-913d-af425e93d73b.png" alt="别告诉我cf炸了"><br>可以阻止写日志&#x2F;扫盘等操作 不影响游戏加速</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>将version.dll放入安装目录<br>正常打开加速器 <strong>等命令行窗口弹出后</strong>再进行登录&#x2F;加速等操作</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://tonyha7.lanzoui.com/iOUCz3lc6wch">蓝奏</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>逆向</tag>
+      
+      <tag>PC</tag>
+      
+      <tag>Windows</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AchievementsUnlocker - 主动调用Steam API解锁成就</title>
     <link href="/2025/11/26/AchievementsUnlocker/"/>
     <url>/2025/11/26/AchievementsUnlocker/</url>
